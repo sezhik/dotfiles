@@ -1,0 +1,11 @@
+[window]
+padding.x = 10
+padding.y = 0
+decorations = "Buttonless"
+decorations_theme_variant = "Light" # "Dark"
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Regular"
+size = 15
+offset.y = 15
