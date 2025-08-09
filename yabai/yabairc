@@ -15,3 +15,4 @@ yabai -m config mouse_follows_focus on
 yabai -m rule --add app="^Системные настройки$" manage=off
 yabai -m rule --add app="^Калькулятор$" manage=off
 yabai -m rule --add app="^V2BOX$" manage=off
+yabai -m rule --add app="^Календарь" manage=off

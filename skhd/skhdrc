@@ -33,3 +33,7 @@ shift + fn - 4 : yabai -m window --space 4;
 shift + fn - 5 : yabai -m window --space 5;
 shift + fn - 5 : yabai -m window --space 6;
 shift + fn - 6 : yabai -m window --space 7;
+
+alt - g : open -n /Applications/Ghostty.app
+alt - o : open -a /Applications/Obsidian.app
+alt - k : open -a Calendar
