@@ -12,6 +12,18 @@ function debase() {
   printf "%s" "$input" | base64 --decode | jq
 }
 
+function project() {
+  local input=${1:-"~/dev/work/"}
+  local proj=$(bash -c "find $input -mindepth 1 -maxdepth 3 -type d -name ".git" -execdir pwd \; | fzf")
+
+  echo $proj
+  if [ -z $proj ]; then
+    return
+  fi
+
+  bash -c "nvim $proj"
+}
+
 
 eval "$(starship init zsh)"
 
