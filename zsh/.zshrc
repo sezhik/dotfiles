@@ -1,4 +1,4 @@
-export PATH="/opt/homebrew/bin:$HOME/go/bin:$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/go/bin:$HOME/.local/bin:$PATH:$HOME/.gitflow/bin"
 source <(fzf --zsh)
 
 function debase() {

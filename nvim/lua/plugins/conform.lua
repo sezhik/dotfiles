@@ -38,14 +38,14 @@ return {
   opts = function(_, opts)
     opts.formatters = opts.formatters or {}
 
-    opts.formatters.goimports_local = {
+    opts.formatters.goimports_local_fast = {
       command = goimports_if_clean,
       args = add_local,
       stdin = true,
     }
 
     opts.formatters_by_ft = opts.formatters_by_ft or {}
-    opts.formatters_by_ft.go = { "gofumpt", "goimports_local" }
+    opts.formatters_by_ft.go = { "goimports_local_fast" }
     opts.formatters_by_ft.yaml = {}
   end,
 }

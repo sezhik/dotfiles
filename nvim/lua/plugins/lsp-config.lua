@@ -5,8 +5,10 @@ return {
       gopls = {
         settings = {
           gopls = {
-            formatting = false,
-            gofumpt = false,
+            analyses = {
+              ST1000 = false,
+            },
+            gofumpt = true,
             hints = {
               assignVariableTypes = false,
               compositeLiteralFields = false,
