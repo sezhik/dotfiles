@@ -47,5 +47,6 @@ return {
     opts.formatters_by_ft = opts.formatters_by_ft or {}
     opts.formatters_by_ft.go = { "goimports_local_fast" }
     opts.formatters_by_ft.yaml = {}
+    opts.formatters_by_ft.sql = { "pg_format" }
   end,
 }

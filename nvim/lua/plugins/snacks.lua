@@ -10,4 +10,14 @@ return {
       desc = "Recent (cwd) custom",
     },
   },
+  opts = {
+    picker = {
+      sources = {
+        files = {
+          hidden = true, -- показывать скрытые файлы
+          ignored = false, -- игнорировать .gitignore = false (если нужно)
+        },
+      },
+    },
+  },
 }

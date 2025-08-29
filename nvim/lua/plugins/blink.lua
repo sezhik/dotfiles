@@ -1,6 +1,5 @@
 return {
   "saghen/blink.cmp",
-  -- dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
   opts = {
     keymap = {
       ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
