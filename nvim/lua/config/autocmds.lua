@@ -38,8 +38,8 @@ local function debounce(func, delay)
 end
 
 local function save()
-  local ok, cmp = pcall(require, "cmp")
-  local in_snippet = ok and cmp and cmp.snippet_active() or false
+  local ok, luasnip = pcall(require, "luasnip")
+  local in_snippet = ok and luasnip and luasnip.in_snippet() or false
 
   if not in_snippet and vim.bo.modified and vim.bo.modifiable and not vim.bo.readonly then
     vim.cmd("silent! write")
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, { callback = stop_timer })
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
-    local params = vim.lsp.util.make_range_params()
+    local params = vim.lsp.util.make_range_params(0, "utf-8")
     params.context = { only = { "source.organizeImports" } }
     -- buf_request_sync defaults to a 1000ms timeout. Depending on your
     -- machine and codebase, you may want longer. Add an additional
@@ -82,5 +82,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
     if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
       vim.cmd("cd " .. arg)
     end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "json", "jsonc" }, -- Apply to both .json and .jsonc files
+  callback = function()
+    vim.opt.conceallevel = 2 -- Set conceallevel to 0 for no concealing
   end,
 })

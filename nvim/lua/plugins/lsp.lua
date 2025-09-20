@@ -2,7 +2,9 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+
       gopls = {
+        cmd = { "gopls", "-remote=auto" },
         settings = {
           gopls = {
             analyses = {
@@ -12,7 +14,7 @@ return {
             hints = {
               assignVariableTypes = false,
               compositeLiteralFields = false,
-              -- compositeLiteralTypes = false,
+              compositeLiteralTypes = false,
               -- constantValues = false,
               -- functionTypeParameters = false,
               parameterNames = false,
@@ -21,6 +23,8 @@ return {
           },
         },
       },
+
+      -- YAML
       yamlls = {
         settings = {
           yaml = {

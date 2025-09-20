@@ -13,3 +13,5 @@ vim.filetype.add({
     ["yabairc"] = "sh",
   },
 })
+
+vim.g.lazyvim_cmp = "nvim-cmp"

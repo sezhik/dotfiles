@@ -1,0 +1,53 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "lsp": {
+    "go": {
+      "command": "gopls"
+    }
+  },
+  "options": {
+    "context_paths": [
+      "AGENTS.md"
+    ]
+  },
+  "mcp": {
+    "avito mcp": {
+      "type": "stdio",
+      "command": "avito",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "$HOME": "/Users/sszhikharev/"
+      }
+    }
+  },
+  "providers": {
+    "avito": {
+      "name": "Avito LLM provider",
+      "type": "openai",
+      "base_url": "http://llm-manager.k.avito.ru/v1/",
+      "api_key": "$OPENAI_API_KEY",
+      "models": [
+        {
+          "name": "qwen3-32b",
+          "id": "qwen3-32b",
+          "context_window": 256000,
+          "default_max_tokens": 20000
+        },
+        {
+          "name": "code chat model",
+          "id": "code-chat-model",
+          "context_window": 256000,
+          "default_max_tokens": 20000
+        },
+        {
+          "name": "Qwen3-coder",
+          "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8",
+          "context_window": 256000,
+          "default_max_tokens": 20000
+        }
+      ]
+    }
+  }
+}
