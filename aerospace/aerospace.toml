@@ -60,6 +60,9 @@ automatically-unhide-macos-hidden-apps = false
     outer.top =        10
     outer.right =      10
 
+[workspace-to-monitor-force-assignment]
+9 = 'secondary'
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
@@ -97,6 +100,8 @@ automatically-unhide-macos-hidden-apps = false
       end if
     end tell'
     '''
+    alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
+    alt-r = 'exec-and-forget open -a Calendar'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
@@ -138,10 +143,10 @@ automatically-unhide-macos-hidden-apps = false
     alt-i = 'workspace I'
     alt-m = 'workspace M'
     alt-n = 'workspace N'
-    alt-o = 'workspace O'
+    # alt-o = 'workspace O'
     alt-p = 'workspace P'
     alt-q = 'workspace Q'
-    alt-r = 'workspace R'
+    # alt-r = 'workspace R'
     alt-s = 'workspace S'
     alt-t = 'workspace T'
     alt-u = 'workspace U'
@@ -212,3 +217,45 @@ automatically-unhide-macos-hidden-apps = false
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
+# [[on-window-detected]]
+#     if.app-id = 'com.apple.iCal'
+#     if.app-name-regex-substring = 'settings'
+#     if.window-title-regex-substring = 'substring'
+#     if.workspace = 'workspace-name'
+#     if.during-aerospace-startup = true
+#     check-further-callbacks = true
+#     run = ['layout floating', 'move-node-to-workspace S']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = ['layout floating']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^v2RayTun'
+    run = ['layout floating']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Mattermost'
+    run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Telegram'
+    run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Zen'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Obsidian'
+    run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Ghostty'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^ChatGPT'
+    run = ['move-node-to-workspace 3']

@@ -26,14 +26,5 @@ shift + fn - l : yabai -m window --swap east
 shift + fn - p : yabai -m window --space prev
 shift + fn - n : yabai -m window --space next
 
-shift + fn - 1 : yabai -m window --space 1;
-shift + fn - 2 : yabai -m window --space 2;
-shift + fn - 3 : yabai -m window --space 3;
-shift + fn - 4 : yabai -m window --space 4;
-shift + fn - 5 : yabai -m window --space 5;
-shift + fn - 5 : yabai -m window --space 6;
-shift + fn - 6 : yabai -m window --space 7;
-
-alt - g : open -a /Applications/Ghostty.app
-alt - o : open -a /Applications/Obsidian.app
-alt - r : open -a Calendar
+# alt - o : open -a /Applications/Obsidian.app
+# alt - r : open -a Calendar

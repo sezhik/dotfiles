@@ -50,7 +50,7 @@ local delay = 1500 -- ms
 local save_debounced = debounce(save, delay)
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, { callback = save_debounced })
-vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, { callback = save })
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, { command = "silent! update", pattern = "*" })
 vim.api.nvim_create_autocmd({ "InsertEnter" }, { callback = stop_timer })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -89,5 +89,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "json", "jsonc" }, -- Apply to both .json and .jsonc files
   callback = function()
     vim.opt.conceallevel = 2 -- Set conceallevel to 0 for no concealing
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "markdown" }, -- Apply to both .json and .jsonc files
+  callback = function()
+    vim.opt.conceallevel = 0 -- Set conceallevel to 0 for no concealing
+    vim.opt.spell = false
   end,
 })

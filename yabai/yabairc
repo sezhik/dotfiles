@@ -3,7 +3,7 @@ borders active_color=0xff89b4fa inactive_color=0xff585b70 width=5.0 &
 yabai -m config layout bsp
 # yabai -m config mouse_modifier alt
 
-yabai -m config top_padding 15
+yabai -m config top_padding 5
 yabai -m config bottom_padding 10
 yabai -m config left_padding 10
 yabai -m config right_padding 10
@@ -19,3 +19,4 @@ yabai -m rule --add app="^Калькулятор$" manage=off
 yabai -m rule --add app="^V2BOX$" manage=off
 yabai -m rule --add app="^Календарь" manage=off
 yabai -m rule --add app="^Calendar" manage=off
+yabai -m rule --add app="^v2RayTun" manage=off

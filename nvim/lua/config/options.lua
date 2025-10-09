@@ -15,3 +15,4 @@ vim.filetype.add({
 })
 
 vim.g.lazyvim_cmp = "nvim-cmp"
+vim.opt.swapfile = false
