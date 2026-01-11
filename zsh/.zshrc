@@ -1,4 +1,4 @@
-export PATH="/opt/homebrew/bin:$HOME/go/bin:$HOME/.local/bin:$PATH:$HOME/.gitflow/bin"
+export PATH="$HOME/.opencode/bin:/opt/homebrew/bin:$HOME/go/bin:$HOME/.local/bin:$PATH:$HOME/.gitflow/bin"
 source <(fzf --zsh)
 
 function debase() {
@@ -21,7 +21,8 @@ function project() {
     return
   fi
 
-  bash -c "nvim $proj"
+  cd $proj
+  bash -c "nvim ."
 }
 
 

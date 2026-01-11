@@ -239,11 +239,20 @@ automatically-unhide-macos-hidden-apps = false
     run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
+    if.app-name-regex-substring = '^amessenger'
+    run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
     if.app-name-regex-substring = '^Telegram'
     run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
     if.app-name-regex-substring = '^Zen'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-name-regex-substring = '^Arc'
     if.during-aerospace-startup = true
     run = ['move-node-to-workspace 2']
 
@@ -258,4 +267,4 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-name-regex-substring = '^ChatGPT'
-    run = ['move-node-to-workspace 3']
+    run = ['move-node-to-workspace C']
