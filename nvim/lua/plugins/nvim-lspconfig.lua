@@ -1,17 +1,50 @@
 return {
-    "neovim/nvim-lspconfig",
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+        ensure_installed = { "lua_ls", "gopls", "tsserver", "vtls" },
+        automatic_enable = false,
+    },
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
     },
     config = function()
-        require('mason').setup()
-        require('mason-lspconfig').setup({
-            ensure_installed = { "lua_ls", "gopls" }
+        vim.diagnostic.config({
+            float = {
+                border = "rounded",
+            },
+            virtual_text = {
+                prefix = '■',
+                spacing = 4,
+            },
+            underline = true,
+            update_in_insert = true,
+            severity_sort = true,
         })
 
-        vim.lsp.enable("lua_ls")
+        vim.lsp.config("lua_ls", {
+            filetypes = { "lua" },
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        -- Это отключает предупреждение о "непонятной" переменной vim
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- Позволяет серверу знать о файлах Neovim
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Добавьте это, если хотите, чтобы LSP видел плагины
+                            -- "${3rd}/luv/library"
+                        },
+                    },
+                },
+            },
+        })
+
         vim.lsp.config("gopls", {
+            filetypes = { "go" },
             cmd = { "gopls", "-remote=auto" },
             settings = {
                 gopls = {
@@ -20,13 +53,13 @@ return {
                     },
                     gofumpt = true,
                     hints = {
-                        assignVariableTypes = false,
-                        compositeLiteralFields = false,
-                        compositeLiteralTypes = false,
-                        -- constantValues = false,
-                        -- functionTypeParameters = false,
-                        parameterNames = false,
-                        rangeVariableTypes = false,
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        constantValues = true,
+                        functionTypeParameters = true,
+                        parameterNames = true,
+                        rangeVariableTypes = true,
                     },
                 },
             },
@@ -45,7 +78,13 @@ return {
                 end
             end,
         })
-        vim.lsp.enable("gopls")
+
+        -- local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+        -- function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        --     opts = opts or {}
+        --     opts.border = opts.border or "rounded" -- Устанавливаем округлые границы
+        --     return orig_util_open_floating_preview(contents, syntax, opts, ...)
+        -- end
 
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
@@ -87,5 +126,7 @@ return {
                 )
             end,
         })
+
+        vim.lsp.enable({ "gopls", "lua_ls", "vtsls" })
     end,
 }

@@ -1,7 +1,7 @@
 vim.cmd.colorscheme("catppuccin")
 
--- чтобы вим спрашивал перед выходом сохранить ли файл
 vim.opt.confirm = true
+vim.opt.swapfile = false
 
 -- номера строк
 vim.opt.number = true
@@ -17,5 +17,8 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
 -- fold
-vim.o.foldmethod = "indent"
-vim.o.foldlevel = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+vim.opt.foldlevel = 99
+
+vim.o.winborder = 'rounded'

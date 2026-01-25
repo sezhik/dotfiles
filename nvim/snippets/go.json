@@ -1,0 +1,3 @@
+{
+  "Wrap error": { "prefix": "ew", "body": "fmt.Errorf(\"$1: %w\", err)" }
+}
