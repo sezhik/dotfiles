@@ -1,4 +1,8 @@
-zsh/corporate_completion
-zsh/.zsh_sessions
-zsh/.zsh_history
-zsh/.zcompdump
+.config/zsh/corporate_completion
+.config/zsh/.zsh_sessions
+.config/zsh/.zsh_history
+.config/zsh/.zcompdump
+.secrets
+.DS_Store
+.crush/
+.claude/

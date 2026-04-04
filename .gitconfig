@@ -1,0 +1,35 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	ru = remote update
+	br = branch
+	poh = push origin HEAD
+	rebom = rebase origin/master
+	please = !git_please
+	dec = log origin/master --decorate --oneline
+	cmm = commit -m
+	ci = "!commit() { git cmm \"$(git current | awk -F- '{print $1\"-\"$2}') $*\"; }; commit"
+	current = !git_current
+	commend = commit --amend --no-edit
+	default = !git_default
+	it = !git init && git cmm \"root\" --allow-empty
+	undo = "!undo() { git reset --soft HEAD^${1-1}; }; undo"
+	refresh = !git_refresh
+	shake = !git_shake
+	force = !git_force
+	start = !git_start jira
+	stop = !git_stop
+	progress = "!commit() { git commit -m  \"$(git current | awk -F- '{print $1\"-\"$2}') $*\"; }; commit"
+	issue = !open https://jr.avito.ru/browse/$(git current | awk -F- '{print $1\"-\"$2}')
+	done = !git_done
+[user]
+	name = Semen Zhikharev
+	email = sszhikharev@avito.ru
+[core]
+	editor = vim
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
